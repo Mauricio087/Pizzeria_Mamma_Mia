@@ -31,7 +31,7 @@ const RegisterPage = () => {
     }
 
     return (
-        <div className="card mt-5 mx-auto" style={{ maxWidth: "400px" }}>
+        <div className="card mt-5 mx-auto " style={{ maxWidth: "400px" }}>
             <div className="card-body">
               <h5 className="card-title text-center">Register</h5>
 
