@@ -2,7 +2,7 @@
 
 const Navbar = () => {
     const total = 25000;
-    const token = false;
+    const token = true;
 
     return (
         <nav className="navbar navbar-expand navbar-light bg-dark">
