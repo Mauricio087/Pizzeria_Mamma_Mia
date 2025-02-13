@@ -1,11 +1,12 @@
 import "./Card.css"
 
-const CardPizza = ({ name, price, ingredients, img }) => {
+const CardPizza = ({ name, price, ingredients, img, desc }) => {
   return (
     <div className="pizza">
       <div className="card">
         <img className="border rounded" src={img} alt={name} />
         <h2 className="text-start fs-3 m-2">{name}</h2>
+        <p>{desc}</p>
         <hr />
         <p>Ingredientes: <br />🍕{ingredients}</p>
         <hr />
@@ -18,7 +19,6 @@ const CardPizza = ({ name, price, ingredients, img }) => {
     </div>
   );
 };
-
 
 
 export default CardPizza
