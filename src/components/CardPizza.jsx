@@ -8,10 +8,9 @@ const CardPizza = ({ name, price, ingredients, img, desc }) => {
         <h2 className="text-start fs-3 m-2">{name}</h2>
         <p>{desc}</p>
         <hr />
-        <ul className='ingredients'>Ingredientes: 🍕
-          {ingredients.map((ingredients) =>(
-            <li key={ingredients}>
-              {ingredients}
+        <ul className='ingredients list-unstyled text-muted'>Ingredientes: 🍕
+          {ingredients.map((ingredients) =>(    //aca se coloco la misma funcion pero con .map y dentro de una ul como se requeria en el hito
+            <li key={ingredients}>{ingredients}
             </li>
           ))}
         </ul>

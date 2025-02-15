@@ -13,7 +13,7 @@ const Home = () => {
             name={pizza.name}
             img={pizza.img}
             desc={pizza.desc}
-            ingredients={pizza.ingredients.join(', ')}
+            ingredients={pizza.ingredients} //aca se modifico sancando .join('. ') y dejandolos igual que los otros.
             price={pizza.price}
           />
         ))}
