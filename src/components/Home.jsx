@@ -6,14 +6,14 @@ const Home = () => {
   return(
     <>
       <Header/>
-      <main>
+      <main className="row d-flex justify-content-center gap-4 mx-0 py-5">
         {pizzas.map((pizza) => (
           <CardPizza
             key={pizza.id}
             name={pizza.name}
             img={pizza.img}
             desc={pizza.desc}
-            ingredients={pizza.ingredients} //aca se modifico sancando .join('. ') y dejandolos igual que los otros.
+            ingredients={pizza.ingredients}
             price={pizza.price}
           />
         ))}

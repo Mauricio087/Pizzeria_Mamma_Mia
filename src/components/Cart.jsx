@@ -1,46 +1,52 @@
 import { useState } from "react";
 import { pizzaCart } from "./Pizzas";
 
+
 const Cart = () => {
-    const [cart, setCart] = useState(pizzaCart);
-
+    const [cart, setCart] = useState(pizzaCart.map(pizza => ({ ...pizza, quantity: pizza.quantity || 1 })));
     const incrementQuantity = (id) => {
-        setCart(
-            cart.map((item) =>
-              item.id === id ? {...item, count: item.count + 1} : item
-            )
+      setCart(prevCart =>
+        prevCart.map(item =>
+          item.id === id ? { ...item, quantity: item.quantity + 1 } : item
         )
-    }
+      );
+    };
 
-    const decrementQuantity = (id) =>{
-        setCart(
-            cart.map((item) =>
-              item.id === id && item.count > 0
-               ? {...item, count: item.count - 1} : item
-            ).filter(item => item.count >0)
-        )
-    }
+    const decrementQuantity = (id) => {
+      setCart(prevCart =>
+        prevCart
+          .map(item => item.id === id ? { ...item, quantity: item.quantity - 1 } : item)
+          .filter(item => item.quantity > 0)
+      );
+    };
 
-    const totalPrice = cart.reduce((total, item) => total + item.price * item.count, 0);
+    const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
 
-  return (
-    <div className='carrito'>
-        <h1>Carrito de Compras</h1>
-        <ul>
+    return (
+      <div className="container bg-light p-4 rounded">
+        <h2 className="text-dark">🛒 Carrito de Compras</h2>
+        {cart.length === 0 ? (
+          <p className="text-dark">El carrito está vacío</p>
+        ) : (
+          <>
             {cart.map((item) => (
-                <li className='list-unstyled' key= {item.id}>
-                    <img src={item.img} alt={item.name} />
-                    {item.name} - ${item.price.toLocaleString()}
-                    <button onClick = {() => decrementQuantity(item.id)}><p> - </p></button>
-                    {item.count}
-                    <button onClick = {() => incrementQuantity(item.id)}><p> + </p></button>
-                </li>
+              <div key={item.id} className="d-flex align-items-center justify-content-between border-bottom py-2">
+                <img src={item.img} alt={item.name} width="80" />
+                <h5 className="m-0 text-dark">{item.name}</h5>
+                <p className="m-0 text-dark">${item.price.toLocaleString("es-CL")}</p>
+                <div className="d-flex align-items-center gap-2">
+                  <button className="btn btn-secondary btn-sm" onClick={() => decrementQuantity(item.id)}>-</button>
+                  <span className="fw-bold text-dark">{item.quantity}</span>
+                  <button className="btn btn-primary btn-sm" onClick={() => incrementQuantity(item.id)}>+</button>
+                </div>
+              </div>
             ))}
-        </ul>
-        <h2>Total: ${totalPrice.toLocaleString()}</h2>
-        <button className='pago'>Pagar</button>
-    </div>
-  )
-}
+            <h4 className="text-dark mt-3">Total: ${total.toLocaleString("es-CL")}</h4>
+            <button className="btn btn-success w-100 mt-3">Pagar</button>
+          </>
+        )}
+      </div>
+    );
+  };
 
 export default Cart
