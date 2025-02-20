@@ -1,4 +1,3 @@
-import "./Card.css"
 
 const CardPizza = ({ name, price, ingredients, img, desc }) => {
   return (
