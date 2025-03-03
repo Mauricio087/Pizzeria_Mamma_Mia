@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const total = 25000;
-    const token = true;
+    const token = false;
 
     return (
         <nav className="navbar navbar-expand navbar-light bg-dark">
@@ -23,47 +23,47 @@ const Navbar = () => {
                <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <button className="nav-link text-white" href="#">
+                            <Link to='/' className="nav-link text-white" href="#">
                                Pizzería Mamma Mia!
-                            </button>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <link to='/' className="nav-link text-white border border-white rounded " href="#">
+                            <Link to='/' className="nav-link text-white border border-white rounded " href="#">
                                 🍕Home
-                            </link>
+                            </Link>
                         </li>
                         {token ? (
                             <>
                                 <li className="nav-item">
-                                    <button className="nav-link text-white border border-white rounded mx-2" href="#">
+                                    <Link to='/Profile' className="nav-link text-white border border-white rounded mx-2" href="#">
                                       🔓Profile
-                                    </button>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <button className="nav-link text-white border border-white rounded mx-2" href="#">
+                                    <Link to='/Logout' className="nav-link text-white border border-white rounded mx-2" href="#">
                                       🔒Logout
-                                    </button>
+                                    </Link>
                                 </li>
                             </>
                         ) :
                         (
                             <>
                                 <li className="nav-item">
-                                    <button className="nav-link text-white border border-white rounded mx-2" href="#">
+                                    <Link to='/Login' className="nav-link text-white border border-white rounded mx-2" href="#">
                                        🔐Login
-                                    </button>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <button className="nav-link text-white border border-white rounded mx-2" href="#">
+                                    <Link to='/Register' className="nav-link text-white border border-white rounded mx-2" href="#">
                                        🔐Register
-                                    </button>
+                                    </Link>
                                 </li>
                             </>
                         )}
                     </ul>
-                    <button className="total btn border border-white text-white">
+                    <Link to='/Cart' className="total btn border border-white text-white">
                         🛒 Total: ${total.toLocaleString()}
-                    </button>
+                    </Link>
                 </div>
             </div>
         </nav>
