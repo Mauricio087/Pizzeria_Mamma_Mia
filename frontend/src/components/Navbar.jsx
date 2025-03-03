@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const total = 25000;
@@ -28,9 +28,9 @@ const Navbar = () => {
                             </button>
                         </li>
                         <li className="nav-item">
-                            <button className="nav-link text-white border border-white rounded " href="#">
-                               🍕Home
-                            </button>
+                            <link to='/' className="nav-link text-white border border-white rounded " href="#">
+                                🍕Home
+                            </link>
                         </li>
                         {token ? (
                             <>
